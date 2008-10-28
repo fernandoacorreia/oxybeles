@@ -24,3 +24,7 @@ class PastedItem(models.Model):
             self.uuid = str(uuid4())  # random so it can't be easily guessed
         super(PastedItem, self).save()
 
+    def get_absolute_url(self):
+        return ('oxybeles_detail', (), { 'slug': self.uuid })
+    get_absolute_url = models.permalink(get_absolute_url)
+
